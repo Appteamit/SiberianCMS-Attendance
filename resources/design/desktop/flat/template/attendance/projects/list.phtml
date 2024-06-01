@@ -1,0 +1,186 @@
+ <div class="row">
+    <div class="col-md-12">
+        <div class="page-content-wrapper form-horizontal">
+            <div class="content solo-page">
+                <h3 class="title-editor border-blue text-center">
+                    <?php echo  p__("attendance", "Manage Projects"); ?>
+
+                <a href="/attendance/projects/create"
+                class="color-blue btn sb-tour pull-right" style="margin-right:16px;">
+                    <?php echo  p__("attendance", "Create a New Project"); ?>
+                </a>
+
+                </h3>
+                <div class="subcontent content-color container-fluid">
+                    <div class="form-group">
+                     <div class="col-md-12">
+                          <table id="dynamic-projects"
+                                   class="table content-white-bkg sb-pager">
+                                <thead>
+                                    <tr class="border-grey">
+                                        <th data-dynatable-column="id"
+                                            style="width: 5%;"><?php echo  p__("attendance", "ID"); ?></th>
+                                        <th data-dynatable-column="title"
+                                            style="width: 30%;"><?php echo  p__("attendance", "Title"); ?></th>
+                                        <th data-dynatable-column="start_date" style="width: 20%;"><?php echo  p__("attendance", "Start Date"); ?></th>
+                                        <th data-dynatable-column="end_date" style="width: 20%;"><?php echo  p__("attendance", "Deadline"); ?></th>
+                                        <th data-dynatable-column="status"
+                                            style="width: 10%;"><?php echo  p__("attendance", "Status"); ?></th>
+                                       <th><?php echo  p__("attendance", "Action"); ?></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="/app/sae/design/desktop/flat/js/dynatable/jquery.dynatable.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css">
+<script type="text/javascript"
+        src="/app/sae/design/desktop/flat/js/dynatable/jquery.dynatable.js"></script>
+
+<style type="text/css">
+    #dynamic-leaves {
+        margin-top: 15px;
+    }
+</style>
+
+<script type="text/javascript">
+    var uriParams = {};
+    let rowTemplate = `
+    <tr class="dynarow">
+        <td>#(ID)</td>
+        <td>(TITLE)</td>
+        <td>(STARTDATE)</td>
+        <td>(ENDDATE)</td>
+        <td>(STATUS)</td>
+        
+        <td>
+           <a href="/attendance/projects/edit/id/(ID)"
+               class="btn btn-xs btn-info edit-project">
+                <?php echo __js("EDIT") ?>
+            </a>
+            <a href="/attendance/projects/delete/id/(ID)"
+               class="btn btn-xs btn-danger delete-project">
+                <?php echo __js("DELETE") ?>
+            </a>
+        </td>
+     </tr>`;
+
+    function rowWriter(rowIndex, record, columns, cellWriter) {
+        return rowTemplate
+            .replace(/\(ID\)/g, record.id)
+            .replace(/\(TITLE\)/g, record.title)
+            .replace(/\(STARTDATE\)/g, record.start_date)
+            .replace(/\(ENDDATE\)/g, record.end_date)
+            .replace(/\(VALUEID\)/g, record.value_id)
+            .replace(/\(STATUS\)/g, record.status);
+    }
+    $.dynatableSetup({
+        table: {
+            defaultColumnIdStyle: 'noStyle'
+        },
+        features: {
+            paginate: true,
+            sort: true,
+            pushState: true,
+            search: true,
+            recordCount: true,
+            perPageSelect: false,
+        },
+    });
+
+    let tableCustomers = $('#dynamic-projects');
+
+    tableCustomers.bind('dynatable:preinit', function(e, dynatable) {
+        dynatable.utility.textTransform.noStyle = function(text) {
+            return text;
+        };
+    });
+  
+ 
+    tableCustomers.bind('dynatable:afterProcess', function (e, data) {
+        uriParams = data.queries;
+    });
+    
+
+    tableCustomers.bind('dynatable:push', function(e, dynatable) {
+          uriParams = dynatable.queries;   
+    });
+
+    // And on the table attendance/leave/list
+    tableCustomers.dynatable({
+        dataset: {
+            ajax: true,
+            ajaxUrl: '/attendance/projects/fetch-all',
+            ajaxOnLoad: true,
+            records: [],
+            perPageDefault: 25
+        },
+        inputs: {
+            processingText: '<?php echo __jss("Loading ...") ?>',
+            searchPlaceholder: '<?php echo __jss("Search Project ...") ?>',
+            recordCountText: '<?php echo __jss("Showing") ?> ',
+            filteredFrom: ' (<?php echo __jss("filtered from #TOTAL# total records") ?>)',
+            recordText: '<?php echo __jss("record") ?>',
+            recordTextPlural: '<?php echo __jss("records") ?>',
+            textOf: '<?php echo __jss("of") ?>',
+            textTo: '<?php echo __jss("to") ?>',
+            queries: $('.dt-search')
+        },
+        writers: {
+            _rowWriter: rowWriter
+        }
+    });
+
+    $(document).ready(function() {
+        if($.datepicker.regional['<?php echo Core_Model_Language::getCurrentLanguageDatepicker(); ?>']) {
+            $.datepicker.setDefaults($.datepicker.regional['<?php echo Core_Model_Language::getCurrentLanguageDatepicker(); ?>']);
+        } else {
+            $.datepicker.setDefaults($.datepicker.regional['en']);
+        }
+    });
+
+
+    $(document).off("click", ".delete-project");
+    $(document).on("click", ".delete-project", function (e) {
+        e.preventDefault();
+        let deleteHref = $(this).attr("href");
+        swal({
+            title: '<?php echo P__("attendance", "Confirmation") ?>',
+            text: '<?php echo P__("attendance", "Are you sure you want to delete this project?") ?>',
+            showCancelButton: true,
+            confirmButtonColor: '#0099C7',
+            confirmButtonText: '<?php echo P__("attendance", "Yes, delete!")?>',
+            cancelButtonText: '<?php echo P__("attendance", "No, go back") ?>',
+            buttons: true
+        }, function(value) {
+            if (!value) {
+                return false;
+            }
+
+            formget(deleteHref,
+                {},
+                function (data) {
+                    feature_form_success(data.message);
+                   // Reload only on success and when done!
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500)
+                },
+                function (data) {
+                    feature_form_error(JSON.parse(data.responseText).message);
+                },
+                false);
+        });
+    });
+
+</script>
+ 

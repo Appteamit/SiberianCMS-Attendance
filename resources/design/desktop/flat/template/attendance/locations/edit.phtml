@@ -1,0 +1,98 @@
+<?php $value_id = (new Attendance_Model_Attendance())->getCurrentValueId();?>
+<?php $location = $this->getCurrentLocation(); ?>
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-content-wrapper form-horizontal">
+            <div class="content solo-page">
+                <h3 class="title-editor border-blue text-center">
+                    <?php echo p__("attendance","Edit "); ?> - #<?php echo $location->getId(); ?>
+               </h3>
+                  <div class="first-row-feature content-color container-fluid">
+                    <div id="customer_form_new">
+                        <form id="locationForm" action="<?php echo $this->getUrl('attendance/locations/save'); ?>" method="post" class="form-horizontal">
+                              <input type="hidden" name="value_id" value="<?php echo $value_id ?>">
+                               <input type="hidden" name="id" value="<?php echo $location->getId(); ?>">
+                               <div class="form-group">
+                                <div class="col-md-6">
+
+                                     <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label for="name"><?php echo p__("attendance", 'Name'); ?><span>*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" value="<?php echo $location->getName(); ?>" class="required input-flat" name="name" id="name" />
+                                        </div>
+                                    </div>
+ 
+                                    <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label for="address"><?php echo p__("attendance", 'Address'); ?></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" value="" class="input-flat" name="address" id="address" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label for="status">
+                                                <?php echo p__("attendance", 'Status'); ?>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <label for="status" class="checkbox-inline">
+                                                <input type="checkbox" id="status" name="status" value="1" <?php echo $location->getStatus() == 1 ? "checked='checked'" : ""; ?> class="color-blue checkbox sb-tour" />
+                                               <?php echo p__("attendance", 'Active'); ?>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                     <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label class="control-label"><?php echo p__("attendance", "Scan Members"); ?>*</label>
+                                        </div>
+                                         <div class="col-sm-8">
+                                            <select name="allow_scan" required="required"  class="form-control required input-flat" id="allow_scan">
+                                                <option value="all" <?php echo $location->getAllowScan() == 'all' ? "selected='selected'" : ""; ?>>
+                                                    <?php echo p__("attendance", "All"); ?>
+                                                </option>
+                                                <option value="restricted" <?php echo $location->getAllowScan() == 'restricted' ? "selected='selected'" : ""; ?>>
+                                                    <?php echo p__("attendance", "Restricted Members"); ?>
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                 </div>
+                            </div>
+                         
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-2 col-xs-12">
+                                    <a href="/attendance/locations/list" id="cancel_location" class="color-blue btn sb-tour"><?php  echo p__("attendance", "Cancel"); ?></a>
+                                    <button id="sb-tour-save_user" type="submit" class="color-blue btn pull-right sb-tour"><?php echo p__("attendance", "Save"); ?></button>
+                                </div>
+                            </div>
+                           
+                        </form>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<script type="text/javascript">
+
+    $('#locationForm').submit(function() {
+        if($(this).valid()) {
+            reload(this, this.action, true, function(data) {
+                if(data.success) {
+                    window.location = $('#cancel_location').attr( "href" );
+                }
+            });
+        }
+        return false;
+    });
+
+ 
+</script>

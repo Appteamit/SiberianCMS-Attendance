@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <attendance_application_edit>
+        <views>
+            <content class="application_view_customization_features_edit_tabbareditor" template="application/customization/features/edit/tabbar_editor.phtml" />
+            <content_editor class="core_view_default" template="attendance/application/edit.phtml" />
+        </views>
+    </attendance_application_edit>
+
+
+   <attendance_leave_list>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>Leaves</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="attendance/leaves/list.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>attendance</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>attendance</code></header_menu>
+        </actions>
+    </attendance_leave_list>
+
+    <attendance_attendance_list>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>attendance</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="attendance/attendance/list.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>attendance</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>attendance</code></header_menu>
+        </actions>
+    </attendance_attendance_list>
+
+    <attendance_application_messages>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>Attendance message</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="attendance/application/messages.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>messages</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>messages</code></header_menu>
+        </actions>
+    </attendance_application_messages>
+
+
+    <attendance_application_users>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>Attendance message</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="attendance/application/users.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>users</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>users</code></header_menu>
+        </actions>
+    </attendance_application_users>
+
+    <attendance_locations_list>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>Locations Qr code</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="attendance/locations/list.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>attendance</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>attendance</code></header_menu>
+        </actions>
+    </attendance_locations_list>
+
+    <attendance_locations_create>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>Locations Qr code</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="attendance/locations/create.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>attendance</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>attendance</code></header_menu>
+        </actions>
+    </attendance_locations_create>
+
+    <attendance_locations_edit>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>Edit locations Qr code</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="attendance/locations/edit.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>attendance</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>attendance</code></header_menu>
+        </actions>
+    </attendance_locations_edit>
+
+    <attendance_projects_list>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>Projects</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="attendance/projects/list.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>attendance</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>attendance</code></header_menu>
+        </actions>
+    </attendance_projects_list>
+
+    <attendance_projects_create>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>projects add</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="attendance/projects/create.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>attendance</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>attendance</code></header_menu>
+        </actions>
+    </attendance_projects_create>
+
+    <attendance_projects_edit>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>Edit project</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="attendance/projects/edit.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>attendance</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>attendance</code></header_menu>
+        </actions>
+    </attendance_projects_edit>
+
+    <attendance_locations_members>
+        <addLayout name="admin_menu" />
+        <addLayout name="customization_default" />
+        <base>
+            <title>Members</title>
+        </base>
+        <views>
+            <content class="admin_view_default" template="attendance/locations/members.phtml" />
+        </views>
+        <actions>
+            <customization_sidebar_left name="setCurrentLink"><code>attendance</code></customization_sidebar_left>
+            <header_menu name="setCurrentLink"><code>attendance</code></header_menu>
+        </actions>
+    </attendance_locations_members>
+
+</layout>

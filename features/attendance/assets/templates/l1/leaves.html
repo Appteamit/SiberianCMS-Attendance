@@ -1,0 +1,38 @@
+<div class="list" ng-if="!payout_data.leavetype.length">  
+    <div class="item item-custom">
+      <p>
+        {{ ::"No leave type available" | translate:"attendance" }}
+      </p>
+    </div>
+</div>
+
+<div class="card attendance-leave-box" ng-if="payout_data.leavetype.length" ng-repeat="value in payout_data.leavetype" ng-show="is_logged_in && !is_loading" ng-click="leaveDeails(value)">
+    <div class="item item-custom">
+    	<span class="badge leave-badge" ng-if="value.pending" style="color:{{settings.inprogress_leave_bar_color}};">{{value.pending}}</span>
+  	    <h2>{{ value.name }}</h2>       
+        <div class="row total-remaning-row">
+       	<div class="col-50 total-remaning-col">
+       		<p class="text-left total-title">
+       			{{ ::"Total" | translate:"attendance" }}
+       			<span class="total-count">{{ value.entitlement }}</span>
+       		</p>
+       	</div>
+       	<div class="col-50 total-remaning-col">
+       		<p class="text-right total-remaining">
+       			{{ ::"Remaining" | translate:"attendance" }}
+       			<span class="remaining-count" style="color:{{settings.remaining_leave_bar_color}};">{{value.remaining}}</span>
+       		</p>
+       	</div>
+       </div>
+
+       <!-- Total Leave -->
+      <div class="progress" style="background:{{settings.remaining_leave_bar_color}};">
+          <!-- Completed Leave -->
+          <div class="progress-bar"ng-if="value.used_pecentage" style="width:{{value.used_pecentage}}%;background:{{settings.total_leave_bar_color}};"></div>
+            <!-- Pending Leave -->
+          <div class="progress-bar-red" ng-if="value.pending_pecentage" style="width:{{value.pending_pecentage}}%;background:{{settings.inprogress_leave_bar_color}};"></div>
+          
+      </div>
+   
+    </div>		 
+</div>

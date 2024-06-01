@@ -1,0 +1,361 @@
+<?php $option_value = $this->getOptionValue(); ?>
+<?php 
+/*Settings Attendance*/
+$settingsFrom = new Attendance_Form_Attendance();
+$settingsFrom->setElementValueById('value_id', $option_value->getId()); 
+$attendance = (new Attendance_Model_Attendance())->find($option_value->getId(), "value_id")->setValueId($option_value->getId())->save();
+if($attendance->getId()) {
+   $attendanceFormData = $attendance->getData();
+   $settingsFrom->populate($attendanceFormData);
+   $settingsFrom->addColorPicker('total_leave_bar_color', p__('attendance', "Total Leave progress color"), $attendanceFormData['total_leave_bar_color']);
+   $settingsFrom->addColorPicker('inprogress_leave_bar_color',p__('attendance', "Inpogress Leave progress color"), $attendanceFormData['inprogress_leave_bar_color']);
+   $settingsFrom->addColorPicker('remaining_leave_bar_color', p__('attendance', "Remaining Leave progress color") , $attendanceFormData['remaining_leave_bar_color']);
+}
+$settingsFrom->addNav("nav-add-attendance", "Submit", false);
+/*End settings attendance*/
+
+/*Start leave Type From*/
+$leaveTypeFrom = new Attendance_Form_Leave();
+$leaveTypeFrom->setElementValueById('value_id', $option_value->getId()); 
+$leaveTypeFrom->addNav("nav-add-attendance", "Submit", true);
+$financial_start = (date("Y")."-".$attendanceFormData['financial_year']."-1");
+$financial_end = strtotime("+12 months", strtotime($financial_start));
+$time_duration = '<b>Duration : From '.date("d-m-Y", strtotime($financial_start)).' to '.date("d-m-Y",  $financial_end ).'</b>';
+$leaveTypeFrom->setElementValueById('time_duration', $time_duration); 
+$leavetypeDeleteFrom = new Attendance_Form_Leave_Delete();
+$leavetype = (new Attendance_Model_LeaveType())->findAll(['value_id' => $option_value->getId(), 'status != ?' => 2]);
+ 
+
+ /*Work Week*/
+$workWeelFrom = new Attendance_Form_WorkWeek();
+$workWeelFrom->setElementValueById('value_id', $option_value->getId()); 
+$workWeelFrom->addNav("nav-add-workweek", "Submit", false);
+$workweek = (new Attendance_Model_WorkWeek())->find($option_value->getId(), "value_id")->setValueId($option_value->getId())->save();
+if($workweek->getId()) {
+   $workweekFormData = $workweek->getData();
+   $workWeelFrom->populate($workweekFormData);
+}
+
+/*Holidays Manage*/
+$holidaysFrom = new Attendance_Form_Holidays_Form();
+$holidaysFrom->setElementValueById('value_id', $option_value->getId()); 
+$holidaysFrom->addNav("nav-add-attendance", "Submit", true); 
+$holidaysDeleteFrom = new Attendance_Form_Holidays_Delete();
+$holidays = (new Attendance_Model_Holidays())->findAll(['value_id' => $option_value->getId(), 'status != ?' => 2]);
+
+?>
+
+<div id="attendancelist" class="attendance">    
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs parent-tab" role="tablist">
+        <li  class="active"  role="presentation">
+            <a href="#settings" aria-controls="access" role="tab" data-toggle="tab">
+               <i class="fa fa-cog" aria-hidden="true"></i>
+                <span class="hidden-xs access"><?php echo p__('attendance', "Settings") ?></span>
+            </a>
+        </li>
+  
+        <li role="presentation">
+            <a href="#leavetype" aria-controls="options" role="tab" data-toggle="tab" >
+               <i class="fa fa-list" aria-hidden="true"></i> 
+               <span class="hidden-xs option"><?php echo p__('attendance', "Leave Type") ?></span>
+            </a>
+        </li>
+
+        <li role="presentation">
+            <a href="#workweek" aria-controls="options" role="tab" data-toggle="tab" >
+               <i class="fa fa-list" aria-hidden="true"></i> 
+               <span class="hidden-xs option"><?php echo p__('attendance', "Work Week") ?></span>
+            </a>
+        </li>
+
+        <li role="presentation">
+            <a href="#holiday" aria-controls="options" role="tab" data-toggle="tab" >
+               <i class="fa fa-list" aria-hidden="true"></i> 
+               <span class="hidden-xs option"><?php echo p__('attendance', "Holiday") ?></span>
+            </a>
+        </li>
+
+        <li role="presentation">
+            <a href="/attendance/attendance/list" target="_blank">
+               <i class="fa fa-list" aria-hidden="true"></i>                 
+               <span class="hidden-xs option"><?php echo p__('attendance', "Attendance") ?></span>
+            </a>
+        </li>
+
+         <li role="presentation">
+            <a href="/attendance/leave/list" target="_blank">
+               <i class="fa fa-list" aria-hidden="true"></i>                 
+               <span class="hidden-xs option"><?php echo p__('attendance', "Leaves") ?></span>
+            </a>
+        </li>
+
+        <li role="presentation">
+            <a href="/attendance/application/messages" target="_blank">
+               <i class="fa fa-list" aria-hidden="true"></i>                 
+               <span class="hidden-xs option"><?php echo p__('attendance', "Messages") ?></span>
+            </a>
+        </li>
+
+        <li role="presentation">
+            <a href="/attendance/locations/list" target="_blank">
+               <i class="fa fa-list" aria-hidden="true"></i>                 
+               <span class="hidden-xs option"><?php echo p__('attendance', "Locations/Shop QR") ?></span>
+            </a>
+        </li>
+
+        <li role="presentation">
+            <a href="/attendance/projects/list" target="_blank">
+               <i class="fa fa-list" aria-hidden="true"></i>                 
+               <span class="hidden-xs option"><?php echo p__('attendance', "Projects") ?></span>
+            </a>
+        </li>
+
+    </ul> 
+
+    <div class="tab-content">
+
+       <!-- Layout settings tab -->
+        <div role="tabpanel" class="tab-pane active" id="settings">
+               <div class="feature-block-list  margin-top">
+                    <h3 class="title-editor no-border-radius title-feature-indent" style="position: relative;"> <?php echo p__('attendance', 'Settings'); ?> 
+                    </h3>
+                </div>                
+                     <br>
+                    <div class="container-fluid first-row-feature content-feature feature-manage-items">
+                        <?php echo $settingsFrom; ?>
+                    </div>
+                    <br>
+                <!-- Passcode background set -->
+                <div class="section">
+                    <?php echo $this->importBackground($option_value, false, false); ?>
+                </div>
+            </div>
+
+            <!-- Leave type settings tab -->
+            <div role="tabpanel" class="tab-pane" id="leavetype">
+                 <!-- Services block -->
+                <div class="feature-block-add margin-top">
+                    <h3 class="title-editor no-border-radius title-feature-indent">
+                        <?php echo p__('attendance', 'Leave Type'); ?>
+                        <button type="button" class="feature-toggle-add toggle_design color-blue pull-right bt-header-right btn">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </h3>
+                 </div>
+
+                <div class="feature-block-create margin-top">
+                    <h3 class="title-editor no-border-radius title-feature-indent">
+                        <?php echo p__('attendance', 'Create a Leave Type'); ?>
+                    </h3>
+                    <div class="container-fluid first-row-feature content-feature feature-manage-items">
+                        <?php echo $leaveTypeFrom; ?>
+                    </div>
+                </div>
+               <br>
+
+                <?php if($leavetype->count() > 0): ?>
+                    <div class="feature-block-list">
+                        <div class="margin-top">
+                            <h3 class="title-editor no-border-radius title-feature-indent">
+                                <?php echo p__('attendance', 'Manage leave type'); ?>
+                                <button type="button" class="toggle_design color-blue pull-right bt-header-right btn feature-toggle-items">
+                                    <i class="fa fa-chevron-down"></i>
+                                </button>
+                            </h3>
+                            <div class="container-fluid first-row-feature content-feature feature-manage-items">
+                                <table class="table content-white-bkg sb-pager">
+                                    <thead>
+                                    <tr class="border-blue">
+                                        <th  style="width:5%;"><?php echo p__('attendance', 'S.NO'); ?></th>
+                                        <th  style="width:20%;"><?php echo p__('attendance', 'Name'); ?></th>
+                                        <th  style="width:10%;"><?php echo p__('attendance', 'Days'); ?></th>
+                                        <th  style="width:20%;"><?php echo p__('attendance', 'Start'); ?></th>
+                                        <th  style="width:20%;"><?php echo p__('attendance', 'End'); ?></th>
+                                        <th style="width:15%;"><?php echo p__('attendance', 'Carry Forward'); ?></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php foreach($leavetype as $key => $type): ?>
+                                        <tr id="type_manage_element_<?php echo $type->getId(); ?>" class="type-manage-element sb-pager">
+                                            <td><?php echo $key+1; ?></td>
+                                            <td><?php echo $type->getName(); ?></td>
+                                            <td><?php echo $type->getEntitlement(); ?></td>
+                                            <td><?php echo date("d-m-Y", strtotime($financial_start)); ?></td>
+                                            <td><?php echo date("d-m-Y",  $financial_end ); ?></td>
+                                            <td><?php echo $type->getIsCarryForword() == 1 ? 'Enable' : 'Disable' ; ?></td>
+                                            <td class="edit-action open-edit text-right" data-id="type_<?php echo $type->getId(); ?>" data-form-url="<?php echo __path("/attendance/leave/loadleaveform", array("id" => $type->getId(), "value_id" =>  $option_value->getId())); ?>">
+                                                <i class="fa fa-pencil"></i>
+                                            </td>
+
+                                            <td class="delete-action">
+                                                <?php
+                                                    $leavetypeDeleteFrom->setAttrib("data-rowid", "type_manage_element_".$type->getId());
+                                                    $leavetypeDeleteFrom->getElement("id")->setValue($type->getId());
+                                                   echo $leavetypeDeleteFrom;
+                                                ?>
+                                           </td>
+                                        </tr>
+                                        <tr class="edit-form" data-id="type_<?php echo $type->getId(); ?>" style="display: none;">
+                                              <td colspan="8">
+                                                  <p class="close-edit" data-id="type_<?php echo $type->getId(); ?>">
+                                                      <i class="fa fa-times"></i><?php echo p__('attendance', "Close") ?>
+                                                  </p>
+                                              </td>
+                                          </tr>
+                                     <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+
+            </div>
+       
+            <!-- Work week settings tab -->
+           <div role="tabpanel" class="tab-pane" id="workweek">
+                 <!-- Services block -->
+                <div class="feature-block-add margin-top">
+                    <h3 class="title-editor no-border-radius title-feature-indent">
+                        <?php echo p__('attendance', 'Manage Work Week'); ?>
+                    </h3>
+                     <div class="container-fluid first-row-feature content-feature feature-manage-items">
+                        <?php echo $workWeelFrom; ?>
+                     </div>
+                 </div>
+            </div>
+
+
+            <!-- Leave type settings tab -->
+            <div role="tabpanel" class="tab-pane" id="holiday">
+                 <!-- Services block -->
+                <div class="feature-block-add margin-top">
+                    <h3 class="title-editor no-border-radius title-feature-indent">
+                        <?php echo p__('attendance', 'Holiday'); ?>
+                        <button type="button" class="feature-toggle-add toggle_design color-blue pull-right bt-header-right btn">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </h3>
+                 </div>
+
+                <div class="feature-block-create margin-top">
+                    <h3 class="title-editor no-border-radius title-feature-indent">
+                        <?php echo p__('attendance', 'Create a Holiday'); ?>
+                    </h3>
+                    <div class="container-fluid first-row-feature content-feature feature-manage-items">
+                        <?php  echo $holidaysFrom; ?>
+                    </div>
+                </div>
+               <br>
+
+               <?php if($holidays->count() > 0): ?>
+                    <div class="feature-block-list">
+                        <div class="margin-top">
+                            <h3 class="title-editor no-border-radius title-feature-indent">
+                                <?php echo p__('attendance', 'Manage Holidays'); ?>
+                                <button type="button" class="toggle_design color-blue pull-right bt-header-right btn feature-toggle-items">
+                                    <i class="fa fa-chevron-down"></i>
+                                </button>
+                            </h3>
+                            <div class="container-fluid first-row-feature content-feature feature-manage-items">
+                                <table class="table content-white-bkg sb-pager">
+                                    <thead>
+                                    <tr class="border-blue">
+                                        <th  style="width:5%;"><?php echo p__('attendance', 'S.No'); ?></th>
+                                        <th  style="width:20%;"><?php echo p__('attendance', 'Name'); ?></th>
+                                        <th  style="width:10%;"><?php echo p__('attendance', 'Days'); ?></th>
+                                        <th  style="width:20%;"><?php echo p__('attendance', 'Start'); ?></th>
+                                        <th  style="width:20%;"><?php echo p__('attendance', 'End'); ?></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php foreach($holidays as $key => $holiday): ?>
+                                        <?php $start = strtotime($holiday->getValidFrom());
+                                              $end = strtotime($holiday->getValidUntil());
+                                              $days_between = ceil(abs($end - $start) / 86400) + 1; ?>
+                                        <tr id="holiday_manage_element_<?php echo $holiday->getId(); ?>" class="holiday-manage-element sb-pager">
+                                            <td><?php echo $key+1; ?></td>
+                                            <td><?php echo $holiday->getName(); ?></td>
+                                            <td><?php echo $days_between; ?></td>
+                                            <td><?php echo date("d-m-Y", strtotime($holiday->getValidFrom())); ?></td>
+                                            <td><?php echo date("d-m-Y",  strtotime($holiday->getValidUntil()) ); ?></td>
+                                            <td class="edit-action open-edit text-right" data-id="holiday_<?php echo $holiday->getId(); ?>" data-form-url="<?php echo __path("/attendance/holidays/loadholidayform", array("id" => $holiday->getId(), "value_id" =>  $option_value->getId())); ?>">
+                                                <i class="fa fa-pencil"></i>
+                                            </td>
+
+                                            <td class="delete-action">
+                                                <?php
+                                                    $holidaysDeleteFrom->setAttrib("data-rowid", "holiday_manage_element_".$holiday->getId());
+                                                    $holidaysDeleteFrom->getElement("id")->setValue($holiday->getId());
+                                                   echo $holidaysDeleteFrom;
+                                                ?>
+                                           </td>
+                                        </tr>
+                                        <tr class="edit-form" data-id="holiday_<?php echo $holiday->getId(); ?>" style="display: none;">
+                                              <td colspan="7">
+                                                  <p class="close-edit" data-id="holiday_<?php echo $holiday->getId(); ?>">
+                                                      <i class="fa fa-times"></i><?php echo p__('attendance', "Close") ?>
+                                                  </p>
+                                              </td>
+                                          </tr>
+                                     <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+
+
+            </div>    
+
+
+         </div>
+    </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        bindForms("#attendancelist");
+        
+        function workingHours() {
+           if ($('input[name=fixed_working_hours]').is(':checked')) {
+                $('#business_hour_start').parent().parent().show();
+                $('#business_hour_end').parent().parent().show();
+                $('#late_count_time').parent().parent().show();
+                                
+            } else {
+                $('#business_hour_start').parent().parent().hide();
+                $('#business_hour_end').parent().parent().hide();
+                $('#late_count_time').parent().parent().hide();
+            }
+        }
+
+        /*On click check*/
+        $(document).on("click", '#fixed_working_hours', function(){
+           workingHours();
+        });
+
+        /*On Load checking */
+        setTimeout(function(){
+          workingHours();
+        }, 1500);
+      
+    });
+
+    $(document).on("change", '#carry_forword', function(){
+        if($(this).is(":checked")) {
+            $('#time_duration').hide();
+        } else {
+             $('#time_duration').show();
+        }
+    });
+</script>

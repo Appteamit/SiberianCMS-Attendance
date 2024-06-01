@@ -1,0 +1,56 @@
+<ion-modal-view cache-view="false"
+                sb-page-background
+                class="attendance attendance-details">
+
+    <ion-header-bar class="bar-custom">
+        <div class="buttons">
+            <button class="button button-clear"
+                    ng-click="closeApplyLeaveDetails()">
+               <i ng-class="backButtonIcon()"></i>
+            </button>
+        </div>
+        <h1 class="title">{{ ::"Apply Leave" | translate:"attendance" }}</h1>
+    </ion-header-bar>
+
+    <ion-content class="has-header">
+
+        <div class="list card">
+
+         <label class="item item-custom item-input item-select remove-border">
+            <div class="input-label">
+              {{ ::"Leave Type" | translate:"attendance" }} <span>*</span>
+            </div>
+            <select ng-model="apply_post.leavetype" ng-change="selectLeaveType()">
+              <option ng-repeat="value in payout_data.leavetype" value="{{value.id}}">{{ value.name }}</option>            
+            </select>
+          </label>
+
+          <label style="color:{{settings.remaining_leave_bar_color}};" class="item item-custom remove-border" ng-if="apply_post.remaining_leave_value > 0">
+            {{  remaining_message_warning }}
+          </label>
+          
+          <label class="item item-custom item-input item-stacked-label remove-border">
+            <span class="input-label">{{ ::"Start Date" | translate:"attendance" }}*</span>
+            <input type="date" ng-model="apply_post.start_Date" placeholder='{{ ::"Start Date" | translate:"attendance" }}'>
+          </label>
+
+          <label class="item item-custom item-input item-stacked-label remove-border">
+            <span class="input-label">{{ ::"End Date" | translate:"attendance" }}*</span>
+            <input type="date" ng-model="apply_post.end_date" placeholder='{{ ::"End Date" | translate:"attendance" }}'>
+          </label>
+
+          <label class="item item-custom item-input item-stacked-label remove-border">
+            <span class="input-label">{{ ::"Reason" | translate:"attendance" }}*</span>
+            <textarea ng-model="apply_post.reason"></textarea>
+          </label>
+         
+          <div class="item item-custom remove-border">
+                <button ng-click="leaveSubmit()" ng-disabled="(apply_post.leavetype > 0 && apply_post.start_Date!='' && apply_post.end_date!='' && apply_post.reason!='') ? false : true" class="button button-full button-positive-custom">
+                    {{ ::"Apply Leave" | translate:"attendance" }}
+                </button>            
+          </div>          
+        </div>
+
+    </ion-content>
+
+</ion-modal-view>

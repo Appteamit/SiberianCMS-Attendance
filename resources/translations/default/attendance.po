@@ -1,0 +1,1103 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-02-17T11:00:10+02:00\n"
+"PO-Revision-Date: 2020-02-17T11:00:10+02:00\n"
+"Language: \n"
+
+# GMT 1589481770.1001
+msgctxt "attendance"
+msgid "Attendance"
+msgstr "Attendance"
+
+# GMT 1589481770.1002
+#, mobile
+msgctxt "attendance"
+msgid "Attendance"
+msgstr "Attendance"
+
+# GMT 1589481770.1003
+msgctxt "attendance"
+msgid "Please enter a business hour start time!"
+msgstr "Please enter a business hour start time!"
+
+# GMT 1589481770.1004
+msgctxt "attendance"
+msgid "Please enter a business hour end time!"
+msgstr "Please enter a business hour end time!"
+
+# GMT 1589481770.1005
+msgctxt "attendance"
+msgid "Please enter a late time!"
+msgstr "Please enter a late time!"
+
+# GMT 1589481770.1006
+msgctxt "attendance"
+msgid "Business hour start time must be less then end time!"
+msgstr "Business hour start time must be less then end time!"
+
+# GMT 1589481770.1007
+msgctxt "attendance"
+msgid "Late count time must be less then business hour!"
+msgstr "Late count time must be less then business hour!"
+
+# GMT 1589481770.1008
+msgctxt "attendance"
+msgid "Saved successfully"
+msgstr "Saved successfully"
+
+# GMT 1589481770.1009
+msgctxt "attendance"
+msgid "Running"
+msgstr "Running"
+
+# GMT 1589481770.1010
+msgctxt "attendance"
+msgid "We are unable to delete this time slot!"
+msgstr "We are unable to delete this time slot!"
+
+# GMT 1589481770.1011
+msgctxt "attendance"
+msgid "Deleted successfully saved"
+msgstr "Deleted successfully saved"
+
+# GMT 1589481770.1012
+msgctxt "attendance"
+msgid "holidays you are trying to edit does not exists."
+msgstr "holidays you are trying to edit does not exists."
+
+# GMT 1589481770.1013
+msgctxt "attendance"
+msgid "Success."
+msgstr "Success."
+
+# GMT 1589481770.1014
+msgctxt "attendance"
+msgid "Leave you are trying to edit does not exists."
+msgstr "Leave you are trying to edit does not exists."
+
+# GMT 1589481770.1015
+msgctxt "attendance"
+msgid "Successfully updated"
+msgstr "Successfully updated"
+
+# GMT 1589481770.1016
+msgctxt "attendance"
+msgid "Attendance Settings"
+msgstr "Attendance Settings"
+
+# GMT 1589481770.1017
+msgctxt "attendance"
+msgid "Check In/Out Enable"
+msgstr "Check In/Out Enable"
+
+# GMT 1589481770.1018
+msgctxt "attendance"
+msgid "Fixed Working Hours"
+msgstr "Fixed Working Hours"
+
+# GMT 1589481770.1019
+msgctxt "attendance"
+msgid "Note : If Fixed working hours then  Min working, Start, End business time and Late entry time must be required!"
+msgstr "Note : If Fixed working hours then  Min working, Start, End business time and Late entry time must be required!"
+
+# GMT 1589481770.1020
+msgctxt "attendance"
+msgid "Min working hours"
+msgstr "Min working hours"
+
+# GMT 1589481770.1021
+msgctxt "attendance"
+msgid " Hours"
+msgstr " Hours"
+
+# GMT 1589481770.1022
+msgctxt "attendance"
+msgid "Start business time"
+msgstr "Start business time"
+
+# GMT 1589481770.1023
+msgctxt "attendance"
+msgid "End business time"
+msgstr "End business time"
+
+# GMT 1589481770.1024
+msgctxt "attendance"
+msgid "Auto checked out after ?"
+msgstr "Auto checked out after ?"
+
+# GMT 1589481770.1025
+msgctxt "attendance"
+msgid "Leave Settings"
+msgstr "Leave Settings"
+
+# GMT 1589481770.1026
+msgctxt "attendance"
+msgid "Financial Year Start"
+msgstr "Financial Year Start"
+
+# GMT 1589481770.1027
+msgctxt "attendance"
+msgid "January"
+msgstr "January"
+
+# GMT 1589481770.1028
+msgctxt "attendance"
+msgid "February"
+msgstr "February"
+
+# GMT 1589481770.1029
+msgctxt "attendance"
+msgid "March"
+msgstr "March"
+
+# GMT 1589481770.1030
+msgctxt "attendance"
+msgid "April"
+msgstr "April"
+
+# GMT 1589481770.1031
+msgctxt "attendance"
+msgid "May"
+msgstr "May"
+
+# GMT 1589481770.1032
+msgctxt "attendance"
+msgid "June"
+msgstr "June"
+
+# GMT 1589481770.1033
+msgctxt "attendance"
+msgid "July"
+msgstr "July"
+
+# GMT 1589481770.1034
+msgctxt "attendance"
+msgid "August"
+msgstr "August"
+
+# GMT 1589481770.1035
+msgctxt "attendance"
+msgid "September"
+msgstr "September"
+
+# GMT 1589481770.1036
+msgctxt "attendance"
+msgid "October"
+msgstr "October"
+
+# GMT 1589481770.1037
+msgctxt "attendance"
+msgid "November"
+msgstr "November"
+
+# GMT 1589481770.1038
+msgctxt "attendance"
+msgid "December"
+msgstr "December"
+
+# GMT 1589481770.1039
+msgctxt "attendance"
+msgid "Leave system Enable"
+msgstr "Leave system Enable"
+
+# GMT 1589481770.1040
+msgctxt "attendance"
+msgid "Leave Apply Enable"
+msgstr "Leave Apply Enable"
+
+# GMT 1589481770.1041
+msgctxt "attendance"
+msgid "Admin Email (For Notification)"
+msgstr "Admin Email (For Notification)"
+
+# GMT 1589481770.1042
+msgctxt "attendance"
+msgid "Designs Settings"
+msgstr "Designs Settings"
+
+# GMT 1589481770.1043
+msgctxt "attendance"
+msgid "Note : Few Warring Message, Buttons and Counter text color manage from COLORS -> ICONS setting."
+msgstr "Note : Few Warring Message, Buttons and Counter text color manage from COLORS -> ICONS setting."
+
+# GMT 1589481770.1044
+msgctxt "attendance"
+msgid "Leave Type"
+msgstr "Leave Type"
+
+# GMT 1589481770.1045
+msgctxt "attendance"
+msgid "Entitlement"
+msgstr "Entitlement"
+
+# GMT 1589481770.1046
+msgctxt "attendance"
+msgid " Days"
+msgstr " Days"
+
+# GMT 1589481770.1047
+msgctxt "attendance"
+msgid "Carry to next financial year."
+msgstr "Carry to next financial year."
+
+# GMT 1589481770.1048
+msgctxt "attendance"
+msgid "Active"
+msgstr "Active"
+
+# GMT 1589481770.1049
+msgctxt "attendance"
+msgid "Non-Working Day"
+msgstr "Non-Working Day"
+
+# GMT 1589481770.1050
+msgctxt "attendance"
+msgid "Working Day"
+msgstr "Working Day"
+
+# GMT 1589481770.1051
+msgctxt "attendance"
+msgid "Monday"
+msgstr "Monday"
+
+# GMT 1589481770.1052
+msgctxt "attendance"
+msgid "Tuesday"
+msgstr "Tuesday"
+
+# GMT 1589481770.1053
+msgctxt "attendance"
+msgid "Wednesday"
+msgstr "Wednesday"
+
+# GMT 1589481770.1054
+msgctxt "attendance"
+msgid "Friday"
+msgstr "Friday"
+
+# GMT 1589481770.1055
+msgctxt "attendance"
+msgid "Thursday"
+msgstr "Thursday"
+
+# GMT 1589481770.1056
+msgctxt "attendance"
+msgid "Saturday"
+msgstr "Saturday"
+
+# GMT 1589481770.1057
+msgctxt "attendance"
+msgid "Sunday"
+msgstr "Sunday"
+
+# GMT 1589481770.1058
+msgctxt "attendance"
+msgid "You are about to remove this leave type ! Are you sure ?"
+msgstr "You are about to remove this leave type ! Are you sure ?"
+
+# GMT 1589481770.1059
+msgctxt "attendance"
+msgid "Name"
+msgstr "Name"
+
+# GMT 1589481770.1060
+msgctxt "attendance"
+msgid "From"
+msgstr "From"
+
+# GMT 1589481770.1061
+msgctxt "attendance"
+msgid "To"
+msgstr "To"
+
+# GMT 1589481770.1062
+msgctxt "attendance"
+msgid "Description"
+msgstr "Description"
+
+# GMT 1589481770.1063
+msgctxt "attendance"
+msgid "You are about to remove this holidays ! Are you sure ?"
+msgstr "You are about to remove this holidays ! Are you sure ?"
+
+# GMT 1589481770.1064
+msgctxt "attendance"
+msgid "Total Leave progress color"
+msgstr "Total Leave progress color"
+
+# GMT 1589481770.1065
+msgctxt "attendance"
+msgid "Inpogress Leave progress color"
+msgstr "Inpogress Leave progress color"
+
+# GMT 1589481770.1066
+msgctxt "attendance"
+msgid "Remaining Leave progress color"
+msgstr "Remaining Leave progress color"
+
+# GMT 1589481770.1067
+msgctxt "attendance"
+msgid "Settings"
+msgstr "Settings"
+
+# GMT 1589481770.1068
+msgctxt "attendance"
+msgid "Leave Type"
+msgstr "Leave Type"
+
+# GMT 1589481770.1069
+msgctxt "attendance"
+msgid "Work Week"
+msgstr "Work Week"
+
+# GMT 1589481770.1070
+msgctxt "attendance"
+msgid "Holiday"
+msgstr "Holiday"
+
+# GMT 1589481770.1071
+msgctxt "attendance"
+msgid "Attendance"
+msgstr "Attendance"
+
+# GMT 1589481770.1072
+msgctxt "attendance"
+msgid "Leaves"
+msgstr "Leaves"
+
+# GMT 1589481770.1073
+msgctxt "attendance"
+msgid "Create a Leave Type"
+msgstr "Create a Leave Type"
+
+# GMT 1589481770.1074
+msgctxt "attendance"
+msgid "Manage leave type"
+msgstr "Manage leave type"
+
+# GMT 1589481770.1075
+msgctxt "attendance"
+msgid "Days"
+msgstr "Days"
+
+# GMT 1589481770.1076
+msgctxt "attendance"
+msgid "Start"
+msgstr "Start"
+
+# GMT 1589481770.1077
+msgctxt "attendance"
+msgid "End"
+msgstr "End"
+
+# GMT 1589481770.1078
+msgctxt "attendance"
+msgid "Carry Forward"
+msgstr "Carry Forward"
+
+# GMT 1589481770.1079
+msgctxt "attendance"
+msgid "Manage Work Week"
+msgstr "Manage Work Week"
+
+# GMT 1589481770.1080
+msgctxt "attendance"
+msgid "Create a Holiday"
+msgstr "Create a Holiday"
+
+# GMT 1589481770.1081
+msgctxt "attendance"
+msgid "Tracking Report"
+msgstr "Tracking Report"
+
+# GMT 1589481770.1082
+msgctxt "attendance"
+msgid "Export"
+msgstr "Export"
+
+# GMT 1589481770.1083
+msgctxt "attendance"
+msgid "Total"
+msgstr "Total"
+
+# GMT 1589481770.1084
+msgctxt "attendance"
+msgid "Action"
+msgstr "Action"
+
+# GMT 1589481770.1085
+msgctxt "attendance"
+msgid "Manage Leaves"
+msgstr "Manage Leaves"
+
+# GMT 1589481770.1086
+msgctxt "attendance"
+msgid "Approved"
+msgstr "Approved"
+
+# GMT 1589481770.1087
+msgctxt "attendance"
+msgid "Rejected"
+msgstr "Rejected"
+
+# GMT 1589481770.1088
+msgctxt "attendance"
+msgid "All"
+msgstr "All"
+
+# GMT 1589481770.1089
+msgctxt "attendance"
+msgid "Duration"
+msgstr "Duration"
+
+# GMT 1589481770.1090
+msgctxt "attendance"
+msgid "Applicant"
+msgstr "Applicant"
+
+# GMT 1589481770.1091
+#, mobile
+msgctxt "attendance"
+msgid "Please select Start date Or End date"
+msgstr "Please select Start date Or End date"
+
+# GMT 1589481770.1092
+#, mobile
+msgctxt "attendance"
+msgid "Please select End date less then Start date"
+msgstr "Please select End date less then Start date"
+
+# GMT 1589481770.1093
+#, mobile
+msgctxt "attendance"
+msgid "You have already apply for between days"
+msgstr "You have already apply for between days"
+
+# GMT 1589481770.1094
+#, mobile
+msgctxt "attendance"
+msgid "Insufficient leave balance"
+msgstr "Insufficient leave balance"
+
+# GMT 1589481770.1095
+#, mobile
+msgctxt "attendance"
+msgid "Apply Successfully!"
+msgstr "Apply Successfully!"
+
+# GMT 1589481770.1096
+#, mobile
+msgctxt "attendance"
+msgid "%s Submitted a leave application"
+msgstr "%s Submitted a leave application"
+
+# GMT 1589481770.1097
+#, mobile
+msgctxt "attendance"
+msgid "Attendance"
+msgstr "Attendance"
+
+# GMT 1589481770.1098
+#, mobile
+msgctxt "attendance"
+msgid "Leaves"
+msgstr "Leaves"
+
+# GMT 1589481770.1099
+#, mobile
+msgctxt "attendance"
+msgid "Click here to log-in"
+msgstr "Click here to log-in"
+
+# GMT 1589481770.1100
+#, mobile
+msgctxt "attendance"
+msgid "Holiday Today"
+msgstr "Holiday Today"
+
+# GMT 1589481770.1101
+#, mobile
+msgctxt "attendance"
+msgid "Welcome"
+msgstr "Welcome"
+
+# GMT 1589481770.1102
+#, mobile
+msgctxt "attendance"
+msgid "Hour"
+msgstr "Hour"
+
+# GMT 1589481770.1103
+#, mobile
+msgctxt "attendance"
+msgid "Minute"
+msgstr "Minute"
+
+# GMT 1589481770.1104
+#, mobile
+msgctxt "attendance"
+msgid "Second"
+msgstr "Second"
+
+# GMT 1589481770.1105
+#, mobile
+msgctxt "attendance"
+msgid "Checked in at"
+msgstr "Checked in at"
+
+# GMT 1589481770.1106
+#, mobile
+msgctxt "attendance"
+msgid "Now is"
+msgstr "Now is"
+
+# GMT 1589481770.1107
+#, mobile
+msgctxt "attendance"
+msgid "Check In"
+msgstr "Check In"
+
+# GMT 1589481770.1108
+#, mobile
+msgctxt "attendance"
+msgid "Check Out"
+msgstr "Check Out"
+
+# GMT 1589481770.1109
+#, mobile
+msgctxt "attendance"
+msgid "Upcoming Holidays"
+msgstr "Upcoming Holidays"
+
+# GMT 1589481770.1110
+#, mobile
+msgctxt "attendance"
+msgid "No upcoming holiday"
+msgstr "No upcoming holiday"
+
+# GMT 1589481770.1111
+#, mobile
+msgctxt "attendance"
+msgid "days"
+msgstr "days"
+
+# GMT 1589481770.1112
+#, mobile
+msgctxt "attendance"
+msgid "No leave type available"
+msgstr "No leave type available"
+
+# GMT 1589481770.1113
+#, mobile
+msgctxt "attendance"
+msgid "Total"
+msgstr "Total"
+
+# GMT 1589481770.1114
+#, mobile
+msgctxt "attendance"
+msgid "Remaining"
+msgstr "Remaining"
+
+# GMT 1589481770.1115
+#, mobile
+msgctxt "attendance"
+msgid "Apply Leave"
+msgstr "Apply Leave"
+
+# GMT 1589481770.1116
+#, mobile
+msgctxt "attendance"
+msgid "Leave Type"
+msgstr "Leave Type"
+
+# GMT 1589481770.1117
+#, mobile
+msgctxt "attendance"
+msgid "Start Date"
+msgstr "Start Date"
+
+# GMT 1589481770.1118
+#, mobile
+msgctxt "attendance"
+msgid "End Date"
+msgstr "End Date"
+
+# GMT 1589481770.1119
+#, mobile
+msgctxt "attendance"
+msgid "Reason"
+msgstr "Reason"
+
+# GMT 1589481770.1120
+#, mobile
+msgctxt "attendance"
+msgid "Used"
+msgstr "Used"
+
+# GMT 1589481770.1121
+#, mobile
+msgctxt "attendance"
+msgid "No leave apply in this category"
+msgstr "No leave apply in this category"
+
+# GMT 1589481770.1122
+#, mobile
+msgctxt "attendance"
+msgid "Days"
+msgstr "Days"
+
+# GMT 1589481770.1123
+#, mobile
+msgctxt "attendance"
+msgid "Success"
+msgstr "Success"
+
+# GMT 1589481770.1124
+#, mobile
+msgctxt "attendance"
+msgid "Error"
+msgstr "Error"
+
+# GMT 1589481770.1125
+#, mobile
+msgctxt "attendance"
+msgid "Sun"
+msgstr "Sun"
+
+# GMT 1589481770.1126
+#, mobile
+msgctxt "attendance"
+msgid "Mon"
+msgstr "Mon"
+
+# GMT 1589481770.1127
+#, mobile
+msgctxt "attendance"
+msgid "Tue"
+msgstr "Tue"
+
+# GMT 1589481770.1128
+#, mobile
+msgctxt "attendance"
+msgid "Wed"
+msgstr "Wed"
+
+# GMT 1589481770.1129
+#, mobile
+msgctxt "attendance"
+msgid "Thu"
+msgstr "Thu"
+
+# GMT 1589481770.1130
+#, mobile
+msgctxt "attendance"
+msgid "Fri"
+msgstr "Fri"
+
+# GMT 1589481770.1131
+#, mobile
+msgctxt "attendance"
+msgid "Sat"
+msgstr "Sat"
+
+# GMT 1589481770.1132
+#, mobile
+msgctxt "attendance"
+msgid "OK"
+msgstr "OK"
+
+# GMT 1589743377.1001
+msgctxt "attendance"
+msgid "You have received messages from %s!"
+msgstr "You have received messages from %s!"
+
+# GMT 1589743377.1002
+#, mobile
+msgctxt "attendance"
+msgid "Running"
+msgstr "Running"
+
+# GMT 1589743377.1003
+#, mobile
+msgctxt "attendance"
+msgid "History"
+msgstr "History"
+
+# GMT 1589743377.1004
+#, mobile
+msgctxt "attendance"
+msgid "Total"
+msgstr "Total"
+
+# GMT 1589743377.1005
+#, mobile
+msgctxt "attendance"
+msgid "No Result found"
+msgstr "No Result found"
+
+# GMT 1589743377.1006
+#, mobile
+msgctxt "attendance"
+msgid "Filter"
+msgstr "Filter"
+
+# GMT 1589743377.1007
+#, mobile
+msgctxt "attendance"
+msgid "Select Year"
+msgstr "Select Year"
+
+# GMT 1589743377.1008
+#, mobile
+msgctxt "attendance"
+msgid "Select Month"
+msgstr "Select Month"
+
+# GMT 1589743377.1009
+#, mobile
+msgctxt "attendance"
+msgid "Apply"
+msgstr "Apply"
+
+# GMT 1589743377.1010
+#, mobile
+msgctxt "attendance"
+msgid "Send Message to Admin"
+msgstr "Send Message to Admin"
+
+# GMT 1589743377.1011
+#, mobile
+msgctxt "attendance"
+msgid "Messages"
+msgstr "Messages"
+
+# GMT 1589743377.1012
+#, mobile
+msgctxt "attendance"
+msgid "No messages yet!"
+msgstr "No messages yet!"
+
+# GMT 1589743377.1013
+#, mobile
+msgctxt "attendance"
+msgid "Type a message"
+msgstr "Type a message"
+
+# GMT 1589743377.1014
+#, mobile
+msgctxt "attendance"
+msgid "Please enter a messages!"
+msgstr "Please enter a messages!"
+
+# GMT 1589743377.1015
+msgctxt "attendance"
+msgid "Messages"
+msgstr "Messages"
+
+# GMT 1589743377.1016
+msgctxt "attendance"
+msgid "Recent"
+msgstr "Recent"
+
+# GMT 1589743377.1017
+msgctxt "attendance"
+msgid "Type a message"
+msgstr "Type a message"
+
+# GMT 1589743377.1018
+msgctxt "attendance"
+msgid "Messages Now"
+msgstr "Messages Now"
+
+# GMT 1589743377.1019
+msgctxt "attendance"
+msgid "Users"
+msgstr "Users"
+
+# GMT 1589743377.1020
+msgctxt "attendance"
+msgid "Back to Messages"
+msgstr "Back to Messages"
+
+# GMT 1589743377.1021
+msgctxt "attendance"
+msgid "Email"
+msgstr "Email"
+
+# GMT 1589743377.1022
+msgctxt "attendance"
+msgid "	Project"
+msgstr "Project"
+
+# GMT 1589743377.1023
+msgctxt "attendance"
+msgid "Location"
+msgstr "Location"
+
+# GMT 1589743377.1024
+msgctxt "attendance"
+msgid "Projects"
+msgstr "Projects"
+
+# GMT 1589743377.1025
+msgctxt "attendance"
+msgid "Locations QR"
+msgstr "Locations QR"
+
+# GMT 1589743377.1026
+msgctxt "attendance"
+msgid "QR check-In Message"
+msgstr "QR check-In Message"
+
+# GMT 1589743377.1027
+msgctxt "attendance"
+msgid "Project Tracking Check In/Out Enable?"
+msgstr "Project Tracking Check In/Out Enable?"
+
+# GMT 1589743377.1028
+msgctxt "attendance"
+msgid "QR Scan Check In/Out Enable?"
+msgstr "QR Scan Check In/Out Enable?"
+
+# GMT 1589743377.1029
+msgctxt "attendance"
+msgid "Check In/Out History Display?"
+msgstr "Check In/Out History Display?"
+
+# GMT 1589743377.1030
+msgctxt "attendance"
+msgid "Checkout Required?"
+msgstr "Checkout Required?"
+
+# GMT 1589743377.1031
+msgctxt "attendance"
+msgid "Manual Check In/Out Enable"
+msgstr "Manual Check In/Out Enable"
+
+# GMT 1589743377.1032
+msgctxt "attendance"
+msgid "Holiday Enable?"
+msgstr "Holiday Enable?"
+
+# GMT 1589743377.1033
+msgctxt "attendance"
+msgid "Time Format"
+msgstr "Time Format"
+
+# GMT 1589743377.1034
+#, mobile
+msgctxt "attendance"
+msgid "Project"
+msgstr "Project"
+
+# GMT 1589743377.1035
+#, mobile
+msgctxt "attendance"
+msgid "Location"
+msgstr "Location"
+
+# GMT 1589743377.1036
+msgctxt "attendance"
+msgid "Date Format"
+msgstr "Date Format"
+
+# GMT 1589743377.1037
+#, mobile
+msgctxt "attendance"
+msgid "Select Project"
+msgstr "Select Project"
+
+# GMT 1589743377.1038
+#, mobile
+msgctxt "attendance"
+msgid "Confirmation"
+msgstr "Confirmation"
+
+# GMT 1589743377.1039
+#, mobile
+msgctxt "attendance"
+msgid "Enter a Note Here"
+msgstr "Enter a Note Here"
+
+# GMT 1589743377.1040
+#, mobile
+msgctxt "attendance"
+msgid "Check-In Now"
+msgstr "Check-In Now"
+
+# GMT 1589743377.1041
+#, mobile
+msgctxt "attendance"
+msgid "Invalid code."
+msgstr "Invalid code."
+
+# GMT 1589743377.1042
+#, mobile
+msgctxt "attendance"
+msgid "This will open the code scan camera on your device"
+msgstr "This will open the code scan camera on your device"
+
+# GMT 1589743377.1043
+#, mobile
+msgctxt "attendance"
+msgid "Unreadable QRCode, sorry"
+msgstr "Unreadable QRCode, sorry"
+
+# GMT 1589743377.1044
+#, mobile
+msgctxt "attendance"
+msgid "Are you sure want to check In?"
+msgstr "Are you sure want to check In?"
+
+# GMT 1589743377.1045
+#, mobile
+msgctxt "attendance"
+msgid "Confirm"
+msgstr "Confirm"
+
+# GMT 1589743377.1046
+#, mobile
+msgctxt "attendance"
+msgid "Success"
+msgstr "Success"
+
+# GMT 1589743377.1047
+#, mobile
+msgctxt "attendance"
+msgid "Check In successfully!"
+msgstr "Check In successfully!"
+
+# GMT 1589743377.1048
+#, mobile
+msgctxt "attendance"
+msgid "Cancel"
+msgstr "Cancel"
+
+# GMT 1589743377.1049
+#, mobile
+msgctxt "attendance"
+msgid "Info"
+msgstr "Info"
+
+# GMT 1589743377.1050
+msgctxt "attendance"
+msgid "Message (to Admin)"
+msgstr "Message (to Admin)"
+
+# GMT 1589743377.1051
+msgctxt "attendance"
+msgid "Manage Projects"
+msgstr "Manage Projects"
+
+# GMT 1589743377.1052
+msgctxt "attendance"
+msgid "Create a New Project"
+msgstr "Create a New Project"
+
+# GMT 1589743377.1053
+msgctxt "attendance"
+msgid "ID"
+msgstr "ID"
+
+# GMT 1589743377.1054
+msgctxt "attendance"
+msgid "QR"
+msgstr "QR"
+
+# GMT 1589743377.1055
+msgctxt "attendance"
+msgid "Status"
+msgstr "Status"
+
+# GMT 1589743377.1056
+msgctxt "attendance"
+msgid "Created At"
+msgstr "Created At"
+
+# GMT 1589743377.1057
+msgctxt "attendance"
+msgid "Edit Project"
+msgstr "Edit Project"
+
+# GMT 1589743377.1058
+msgctxt "attendance"
+msgid "Title"
+msgstr "Title"
+
+# GMT 1589743377.1059
+msgctxt "attendance"
+msgid "Deadline"
+msgstr "Deadline"
+
+# GMT 1589743377.1060
+msgctxt "attendance"
+msgid "Address"
+msgstr "Address"
+
+# GMT 1589743377.1061
+msgctxt "attendance"
+msgid "Save"
+msgstr "Save"
+
+# GMT 1589743377.1062
+msgctxt "attendance"
+msgid "Cancel"
+msgstr "Cancel"
+
+# GMT 1589743377.1063
+msgctxt "attendance"
+msgid "Create a new QR"
+msgstr "Create a new QR"
+
+# GMT 1589743377.1064
+msgctxt "attendance"
+msgid "Manage Qr Code"
+msgstr "Manage Qr Code"
+
+# GMT 1589743377.1065
+msgctxt "attendance"
+msgid "EDIT"
+msgstr "EDIT"
+
+# GMT 1589743377.1066
+msgctxt "attendance"
+msgid "DELETE"
+msgstr "DELETE"
+
+# GMT 1589743377.1067
+msgctxt "attendance"
+msgid "Locations/Shop QR"
+msgstr "Locations/Shop QR"
+
+# GMT 1589743377.1068
+msgctxt "attendance"
+msgid "Scan Successfully"
+msgstr "Scan Successfully"
+
+# GMT 1589743377.1069
+msgctxt "attendance"
+msgid "You may not have the permission to check-In!"
+msgstr "You may not have the permission to check-In!"
+
+# GMT 1589743377.1070
+msgctxt "attendance"
+msgid "Invalid QR code!"
+msgstr "Invalid QR code!"
+
+# GMT 1589743377.1071
+msgctxt "attendance"
+msgid "Invalid Param!"
+msgstr "Invalid Param!"
+
+# GMT 1589743377.1072
+msgctxt "attendance"
+msgid "Members of %s"
+msgstr "Members of %s"

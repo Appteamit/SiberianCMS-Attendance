@@ -1,0 +1,38 @@
+{
+  "name": "Attendance",
+  "code": "attendance",
+  "version": "1.0.0",
+  "category": "social",
+  "model": "Attendance_Model_Attendance",
+  "desktop_uri": "attendance/application/",
+  "routes": [
+    {
+      "root": true,
+      "state": "attendance-home",
+      "controller": "AttendanceController",
+      "url": "attendance/mobile_list/index/value_id/:value_id",
+      "template": "l1/home.html",
+      "cache": false
+    },
+    {
+      "root": false,
+      "state": "attendance-message",
+      "controller": "AttendanceMessageController",
+      "url": "attendance/mobile_list/index/value_id/:value_id",
+      "template": "l1/message.html",
+      "cache": false
+    }    
+  ],
+  "icons": [
+    "icons/attendance-flat.png"
+  ],
+  "files": [
+    "js/controllers/attendance.js",
+    "js/factory/attendance.js",
+    "scss/attendance.scss"
+  ],
+  "compile": true,
+  "use_account": true,
+  "only_once": true,
+  "load_on_start": false   
+}

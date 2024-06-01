@@ -1,0 +1,135 @@
+<?php $value_id = (new Attendance_Model_Attendance())->getCurrentValueId();?>
+<?php $project = $this->getCurrentProject(); ?>
+<div class="row" id="add-project-form">
+    <div class="col-md-12">
+        <div class="page-content-wrapper form-horizontal">
+            <div class="content solo-page">
+                <h3 class="title-editor border-blue text-center">
+                    <?php echo p__("attendance","Edit Project"); ?> - #<?php echo $project->getId(); ?>
+               </h3>
+                  <div class="first-row-feature content-color container-fluid">
+                    <div id="customer_form_new">
+                        <form id="locationForm" action="<?php echo $this->getUrl('attendance/projects/save'); ?>" method="post" class="form-horizontal">
+                              <input type="hidden" name="value_id" value="<?php echo $value_id ?>">
+                               <input type="hidden" name="id" value="<?php echo $project->getId(); ?>">
+                             <div class="form-group">
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label for="title"><?php echo p__("attendance", 'Title'); ?><span>*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" value="<?php echo $project->getTitle(); ?>" class="required input-flat" name="title" id="title" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label for="description"><?php echo p__("attendance", 'Description'); ?></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <textarea class=" input-flat" name="description" id="description"><?php echo $project->getDescription(); ?></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label for="address"><?php echo p__("attendance", 'Address'); ?></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" value="<?php echo $project->getAddress(); ?>" class="required input-flat" name="address" id="address" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label for="start_date"><?php echo p__("attendance", 'Start Date'); ?><span>*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" value="<?php echo $project->getStartDate(); ?>" class="required input-flat" name="start_date" id="start_date" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label for="end_date"><?php echo p__("attendance", 'Deadline'); ?></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" value="<?php echo $project->getEndDate(); ?>" class="required input-flat" name="end_date" id="end_date" />
+                                        </div>
+                                    </div>
+ 
+                                    <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label for="status">
+                                                <?php echo p__("attendance", 'Status'); ?>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <label for="status" class="checkbox-inline">
+                                                <input type="checkbox" id="status" name="status" value="1" <?php echo $project->getStatus() == 1 ? "checked='checked'" : ""; ?> class="color-blue checkbox sb-tour" />
+                                               <?php echo p__("attendance", 'Active'); ?>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                 </div>
+                            </div>
+                         
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-2 col-xs-12">
+                                    <a href="/attendance/projects/list" id="cancel_location" class="color-blue btn sb-tour"><?php  echo p__("attendance", "Cancel"); ?></a>
+                                    <button id="sb-tour-save_user" type="submit" class="color-blue btn pull-right sb-tour"><?php echo p__("attendance", "Save"); ?></button>
+                                </div>
+                            </div>
+                           
+                        </form>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<script type="text/javascript">
+ $(document).ready(function() {
+        bindForms("#add-project-form"); 
+        $('#description').ckeditor(ckeditor_config.default);
+
+        $('#locationForm').submit(function() {
+            if($(this).valid()) {
+                reload(this, this.action, true, function(data) {
+                    if(data.success) {
+                        window.location = $('#cancel_location').attr( "href" );
+                    }
+                });
+            }
+            return false;
+        });
+    });
+
+     /*Date Pickers*/
+    if($.datepicker.regional['<?php echo Core_Model_Language::getCurrentLanguageDatepicker(); ?>']) {
+        $.datepicker.setDefaults($.datepicker.regional['<?php echo Core_Model_Language::getCurrentLanguageDatepicker(); ?>']);
+    } else {
+        $.datepicker.setDefaults($.datepicker.regional['en']);
+    }
+    $( "#start_date" ).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        numberOfMonths: 1,
+        onClose: function( selectedDate ) {
+            $( "#end_date" ).datepicker( "option", "minDate", selectedDate );
+        }
+    });
+    $( "#end_date" ).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        numberOfMonths: 1,
+        onClose: function( selectedDate ) {
+            $( "#start_date" ).datepicker( "option", "maxDate", selectedDate );
+        }
+    }); 
+
+ 
+</script>

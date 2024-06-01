@@ -1,0 +1,44 @@
+<ion-modal-view cache-view="false"
+                sb-page-background
+                class="attendance attendance-notes">
+
+    <ion-header-bar class="bar-custom">
+        <div class="buttons">
+            <button class="button button-clear"
+                    ng-click="closeScanCheckInModal()">
+                <i ng-class="backButtonIcon()"></i>
+            </button>
+        </div>
+       
+        <h1 class="title">{{ ::"Confirmation" | translate:"attendance" }}</h1>
+ 
+  </ion-header-bar>
+  
+  <ion-content class="has-header" >         
+      
+      <div class="loader" ng-show="is_loading">
+          <ion-spinner class="spinner-custom"></ion-spinner>
+      </div>  
+    
+     <div class="list">
+      
+          <label class="item item-custom item-body" ng-if="payout_data.settings.qr_checkin_note!=''">
+            <p ng-bind-html="payout_data.settings.qr_checkin_note | trusted_html"></p>
+          </label>
+
+          <label class="item item-custom item-input item-stacked-label">
+            <span class="input-label">{{ ::"Enter a Note Here" | translate:"attendance" }}</span>
+            <textarea ng-model="postValues.note"></textarea>
+          </label>
+         
+          <div class="item item-custom">
+                <button ng-click="scanCheckInSubmit()" class="button button-full button-positive-custom">
+                    {{ ::"Check-In Now" | translate:"attendance" }}
+                </button>            
+          </div>
+
+     </div>
+
+  </ion-content>
+
+</ion-modal-view>

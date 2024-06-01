@@ -1,0 +1,56 @@
+<ion-view sb-page-background
+          class="attendance attendance-home" cache-view="false" ng-controller="AttendanceController">
+  <ion-nav-title> {{ page_title }}</ion-nav-title>
+  <ion-nav-buttons side="secondary">
+        <button  
+            ng-if="(action.tab === 'attendance') && is_logged_in && !is_loading"
+            class="button button-clear header-item" ng-click="getLocation()">
+             <i class="icon ion-refresh"></i>               
+        </button>
+       <button  
+            ng-if="(action.tab === 'attendance') && is_logged_in && !is_loading && payout_data.settings.qr_scan_enable == 1"
+            class="button button-clear header-item" ng-click="showScanCamera()">
+               <i class="icon ion-qr-scanner"></i> 
+        </button> 
+        <button  
+            ng-if="(action.tab === 'attendance') && is_logged_in && !is_loading && payout_data.settings.check_in_history_enable == 1"
+            class="button button-clear header-item" ng-click="attendanceHistory()">
+              <i class="icon ion-clipboard"></i>
+        </button>
+  </ion-nav-buttons>
+
+  <ion-header-bar class="bar-subheader bar-custom bar bar-header" ng-if="is_logged_in && payout_data.settings.leave_enable">
+        <div class="button-bar text-center">
+            <div class="button button-custom" ng-class="{ 'active' : action.tab == 'attendance'}" ng-click="action.tab = 'attendance'">
+               {{ ::"Attendance" | translate:"attendance" }}
+            </div>
+            <div class="button button-custom"  ng-class="{ 'active' : action.tab == 'leaves'}" ng-click="action.tab = 'leaves'">
+                {{ ::"Leaves" | translate:"attendance" }}
+            </div>
+        </div>
+    </ion-header-bar>
+ 
+  <ion-content class="has-header" ng-class="{ 'has-subheader' :  payout_data.settings.leave_enable == 1}" >   	
+      <div class="list" ng-if="!is_logged_in && !is_loading">
+       <div class="item item-body item-custom attendance-login-button remove-border">
+          <button class="button button-block button-positive button-positive-custom" ng-click="login()" >
+            {{ ::"Click here to log-in" | translate:"attendance" }}
+          </button>
+       </div>
+      </div>
+      
+      <ng-include ng-if="(action.tab == 'attendance') && is_logged_in && !is_loading" src="'./features/attendance/assets/templates/l1/attendance.html'"></ng-include>
+
+      <ng-include ng-if="(action.tab === 'leaves') && is_logged_in && !is_loading" src="'./features/attendance/assets/templates/l1/leaves.html'"></ng-include>
+
+
+      <div class="loader" ng-show="is_loading">
+          <ion-spinner class="spinner-custom"></ion-spinner>
+      </div>  
+
+  </ion-content>
+
+  
+  <button ng-show="payout_data.settings.leave_apply_enable && payout_data.settings.leave_enable" class="button light ion-plus-round button-floating-action button-positive button-positive-custom" ng-if="(action.tab === 'leaves') && is_logged_in && !is_loading" ng-click="applyLeave()"></button> 
+
+</ion-view>

@@ -1,0 +1,83 @@
+<div class="card attendance-customer-box" ng-if="is_logged_in && !is_loading">
+    <div class="item item-custom remove-border text-center">
+  		 <h2 class="name-title">{{ ::"Welcome" | translate:"attendance" }} {{ customer.firstname }}</h2>
+        <p class="current_date">{{ currentDate() }}</p>
+        <p class="working_status icon icon-warning-custom" ng-if="!payout_data.is_working_day && payout_data.length > 0">{{ ::"Holiday Today" | translate:"attendance" }}</p>
+        <p class="location_status" ng-if="payout_data.address!='' && payout_data.address != null">
+            <i class="icon ion-ios-location"></i> 
+         <marquee>{{ payout_data.address }}</marquee>
+        
+      </p>
+     </div>		 
+</div>
+
+<div class="card" ng-if="is_logged_in && !is_loading && payout_data.settings.is_message_admin">
+  <div class="item item-icon-left" ui-sref="attendance-message({value_id: value_id})" >
+    <i class="icon ion-email"></i>
+    {{ ::"Messages" | translate:"attendance" }}
+    <span class="badge badge-assertive badge-assertive-custom">{{ payout_data.unreadMessage }}</span>
+  </div>
+</div>
+
+
+<div class="card attendance-check-in-out-box" ng-if="is_logged_in && !is_loading && payout_data.settings.check_in_out_enable">
+    <div class="item item-custom remove-border">
+  	    <div class="row check-in-out-tabs text-center" ng-if="!is_loading && payout_data.settings.is_checkout_enable == 1">
+            <div class="col check-in-out-clock check-in-out-hour">
+                <span class="clock-count icon icon-active-custom">{{checkedClock.hours}}</span>
+                <p class="clock-title">{{ ::"Hour" | translate:"attendance" }}</p>
+            </div>
+            <div class="col check-in-out-clock check-in-out-min">
+                <span class="clock-count icon icon-active-custom">{{checkedClock.minutes}}</span>
+                <p class="clock-title">{{ ::"Minute" | translate:"attendance" }}</p>
+            </div>
+            <div class="col check-in-out-clock check-in-out-second">
+                <span class="clock-count icon icon-active-custom">{{checkedClock.seconds}}</span>
+                <p class="clock-title">{{ ::"Second" | translate:"attendance" }}</p>
+            </div>
+       </div>
+      <p class="checkedin-time text-center" ng-if="is_checked_in">{{ ::"Checked in at" | translate:"attendance" }} {{ payout_data.timetracking.starttime }}</p>
+      <p class="now-time text-center" ng-if="current_time!='' && !is_checked_in">{{ ::"Now is" | translate:"attendance" }} {{ current_time }}</p>
+   </div>
+
+   <div class="item item-custom remove-border">
+		 <div class="row check-in-out-buttons text-center">
+		 	<div class="col check-in-out-checkin">
+			 	<button ng-disabled="is_checked_in" ng-click="StartTracking()" class="button check-in-out-button" ng-class="{'button-positive-custom' : is_checked_in == false, 'button-custom' : is_checked_in == true}">
+				  {{ ::"Check In" | translate:"attendance" }}
+				</button>
+			</div>
+
+			<div class="col check-in-out-checkout" ng-if="!is_loading && payout_data.settings.is_checkout_enable == 1">
+			 	<button ng-disabled="!is_checked_in" ng-click="StopTracking()" class="button check-in-out-button" ng-class="{'button-positive-custom' : is_checked_in == true, 'button-custom' : is_checked_in == false}">
+				  {{ ::"Check Out" | translate:"attendance" }}
+				</button>
+			</div>
+
+		 </div>
+   </div>		 
+</div>
+ 
+<div class="card" ng-if="!is_loading && payout_data.settings.holiday_enable == 1">
+
+	 <div class="item item-divider item-divider-custom">
+	 	{{ ::"Upcoming Holidays" | translate:"attendance" }}
+	 </div>
+
+    <div class="item item-custom" ng-if="!payout_data.holidays.length">
+      <p>
+        {{ ::"No upcoming holiday" | translate:"attendance" }}
+      </p>
+    </div>
+
+	 <div class="item item-custom" ng-if="payout_data.holidays.length" ng-repeat="value in payout_data.holidays">
+	    <span class="item-note">
+	      {{value.days}} {{ ::"days" | translate:"attendance" }}
+	    </span>
+	    <h2>{{value.valid_from}}</h2>
+	    <p>{{value.name}}</p>
+	    <p ng-if="value.description != ''">{{value.description}}</p>
+	</div>
+
+</div>
+   

@@ -1,0 +1,110 @@
+.attendance {
+
+	.remove-border {
+	    border: 0px;
+	}
+    .button-floating-action {
+        position: fixed !important;
+        top: calc(90vh - 60px) !important;
+        right: 2vw !important;
+        border-radius: 100px !important; 
+        border-width: 0 !important;
+        padding: 5px 12px 5px 12px !important;
+        z-index: 999 !important;
+        box-shadow: 5px 5px 5px #888888 !important;
+    }
+    .progress {
+	  margin:0px;
+	  padding:0;
+	  width:100%;
+	  height:5px;
+	  overflow:hidden;
+	  background:#e5e5e5;
+	  border-radius:6px;
+	}
+	.progress-bar-info {
+	  position:relative;
+	  float:left;
+	  min-width:1%;
+	  height:100%;
+	  background:cornflowerblue;
+	}
+	.progress-bar {
+	   position:relative;
+	  float:left;
+	  min-width:1%;
+	  height:100%;
+	  background:#66bb6a;
+	}
+	.progress-bar-red {
+	   position:relative;
+	  float:left;
+	  min-width:1%;
+	  height:100%;
+	  background:#ef5350;
+	}
+	.progress-percent {
+	   position:absolute;
+	  top:50%;
+	  left:50%;
+	  transform:translate(-50%,-50%);
+	  margin:0;
+	  font-family:tahoma,arial,helvetica;
+	  font-size:12px;
+	  color:white;
+	}
+	span.total-count {
+	    font-weight: bold;
+	}
+	span.remaining-count {
+	    font-weight: bold;
+	    font-size: 18px;
+	}
+	span.leave-badge{
+		right: 16px;
+	}
+	.row.leave-details-tabs {
+	    padding: 0px;
+	}
+	p.leave-title {
+	    font-size: 10px;
+	    opacity: 0.8;
+	}
+	.leave-details-col {
+	    padding: 0px;
+	}
+	p.current_date {
+	     margin-top: 5%;
+	    font-size: 16px;
+	    font-weight: 400;
+	}
+	.check-in-out-tabs {
+	    padding: 0px;
+	    font-size: 20px;
+	    font-weight: 600;
+	}
+	.check-in-out-button {
+	 	padding: 0px;
+	}
+	.check-in-out-button  {
+	    width : 100%;
+	    text-transform: uppercase;
+	    min-height: auto;
+	 }
+	.check-in-out-buttons {
+		padding: 0px;
+	 }
+	.check-in-out-checkin {
+    	padding: 2px;
+	}
+	.check-in-out-checkout {
+	    padding: 2px;
+	}
+	.attendance-month {
+	    font-size: 10px;
+	}
+	p.checkedin-time {
+	    opacity: 0.8;
+	}
+
+}

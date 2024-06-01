@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+
+    <attendance_leave_admin>
+        <addLayout name="base_email" />
+        <views>
+            <content_email class="core_view_email_default" template="attendance/leave_admin.phtml" />
+        </views>
+    </attendance_leave_admin>
+   
+    <attendance_leave_user>
+        <addLayout name="base_email" />
+        <views>
+            <content_email class="core_view_email_default" template="attendance/user.phtml" />
+        </views>
+    </attendance_leave_user>
+
+    <attendance_message>
+        <addLayout name="base_email" />
+        <views>
+            <content_email class="core_view_email_default" template="attendance/message.phtml" />
+        </views>
+    </attendance_message>
+
+</layout>

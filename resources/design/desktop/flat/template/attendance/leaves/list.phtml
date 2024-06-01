@@ -1,0 +1,254 @@
+ <div class="row">
+    <div class="col-md-12">
+        <div class="page-content-wrapper form-horizontal">
+            <div class="content solo-page">
+                <h3 class="title-editor border-blue text-center">
+                    <?php echo  p__("attendance", "Manage Leaves"); ?>
+             
+                </h3>
+               
+                  <div class="subcontent content-color container-fluid">
+                    <div class="form-group">
+                     <div class="col-md-12">
+                        <div id="row_filter_metrics" class="pull-right">
+                               <div class="col-md-4 col-sm-12 col-xs-12">
+                                    <select class="input-flat sb-tour dt-search color-blue" name="status" id="status" data-dynatable-query="status">
+                                       <option value=""><?php echo p__("attendance", 'All'); ?></option>
+                                       <option value="0" selected="selected"><?php echo p__("attendance", 'Pending'); ?></option>
+                                        <option value="1"><?php echo p__("attendance", 'Approved'); ?></option>
+                                        <option value="2"><?php echo p__("attendance", 'Rejected'); ?></option>                                        
+                                    </select>
+                               </div>
+                               <div class="col-md-1 col-sm-6 col-xs-6">
+                                    <label for="from"><?php echo  p__("attendance", "From"); ?></label>
+                                </div>
+                                <div class="col-md-3 col-sm-6 col-xs-6">
+                                    <input type="text" id="from" name="from" class="input-flat sb-tour dt-search" autocomplete="off" data-dynatable-query="from">
+                                </div>
+                                <div class="col-md-1 col-sm-6 col-xs-6">
+                                    <label for="to"><?php echo  p__("attendance", "To"); ?></label>
+                                </div>
+                                <div class="col-md-3 col-sm-6 col-xs-6">
+                                    <input type="text" id="to" name="to" class="input-flat sb-tour dt-search" autocomplete="off" data-dynatable-query="to">
+                                </div>
+                        </div>
+
+                            <table id="dynamic-leaves"
+                                   class="table content-white-bkg sb-pager">
+                                <thead>
+                                    <tr class="border-grey">
+                                        <th data-dynatable-column="id"
+                                            style="width: 5%;"><?php echo  p__("attendance", "ID"); ?></th>
+                                        <th data-dynatable-column="first_name"
+                                            style="width: 20%;"><?php echo  p__("attendance", "Applicant"); ?></th>
+                                        <th style="width: 15%;"><?php echo  p__("attendance", "Leave Type"); ?></th>
+                                        <th data-dynatable-column="start_date"
+                                            style="width: 25%;"><?php echo  p__("attendance", "Date"); ?></th>
+                                        <th data-dynatable-column="total_days"
+                                            style="width: 10%;"><?php echo  p__("attendance", "Duration"); ?></th>
+                                         <th data-dynatable-column="status"
+                                            style="width: 10%;"><?php echo  p__("attendance", "Status"); ?></th>
+                                       <th><?php echo  p__("attendance", "Action"); ?></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="/app/sae/design/desktop/flat/js/dynatable/jquery.dynatable.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css">
+<script type="text/javascript"
+        src="/app/sae/design/desktop/flat/js/dynatable/jquery.dynatable.js"></script>
+
+<style type="text/css">
+    #dynamic-leaves {
+        margin-top: 15px;
+    }
+</style>
+
+<script type="text/javascript">
+    var uriParams = {};
+    let rowTemplate = `
+    <tr class="dynarow">
+        <td>#(ID)</td>
+        <td>(USER)</td>
+        <td>(TYPE)</td>
+        <td>(START) - (END)</td>
+        <td>(TOTAL) Days</td>
+        <td>(STATUS)</td>
+        <td class="td-(STATUS)">
+            <a class="leave-action-button leave-reject leave-status-update" href="/attendance/leave/status-update/id/(ID)/status/reject" data-status="reject" data-text="<?php echo P__("attendance", "Are you sure you want to reject this leave?") ?>" ><i class="fa fa-times-circle-o" aria-hidden="true"></i> Reject</a> | 
+            <a class="leave-action-button leave-approve leave-status-update"  href="/attendance/leave/status-update/id/(ID)/status/approve" data-status="approve"  data-text="<?php echo P__("attendance", "Are you sure you want to approve this leave?") ?>" ><i class="fa fa-check-square-o" aria-hidden="true"></i> Approve</a> 
+        </td>
+    </tr>`;
+
+    function rowWriter(rowIndex, record, columns, cellWriter) {
+        return rowTemplate
+            .replace(/\(ID\)/g, record.leave_id)
+            .replace(/\(USER\)/g, record.user)
+            .replace(/\(TYPE\)/g, record.leave_type)
+            .replace(/\(START\)/g, record.start_date)
+            .replace(/\(END\)/g, record.end_date)
+            .replace(/\(TOTAL\)/g, record.total_days)
+           .replace(/\(STATUS\)/g, record.status);
+    }
+    $.dynatableSetup({
+        table: {
+            defaultColumnIdStyle: 'noStyle'
+        },
+        features: {
+            paginate: true,
+            sort: true,
+            pushState: true,
+            search: true,
+            recordCount: true,
+            perPageSelect: false,
+        },
+    });
+
+    let tableCustomers = $('#dynamic-leaves');
+
+    tableCustomers.bind('dynatable:preinit', function(e, dynatable) {
+        dynatable.utility.textTransform.noStyle = function(text) {
+            return text;
+        };
+    });
+  
+    tableCustomers.bind('dynatable:init', function(e, dynatable) {
+            dynatable.queries.functions['to'] = function(r, val) {
+              return queryValue;
+            };  
+            dynatable.queries.functions['from'] = function(r, val) {
+              return queryValue;
+            }; 
+            dynatable.queries.functions['status'] = function(r, val) {
+              return queryValue;
+            }; 
+                    
+      });
+
+    tableCustomers.bind('dynatable:afterProcess', function (e, data) {
+        uriParams = data.queries;
+    });
+    
+
+    tableCustomers.bind('dynatable:push', function(e, dynatable) {
+          uriParams = dynatable.queries;   
+    });
+
+    // And on the table attendance/leave/list
+    tableCustomers.dynatable({
+        dataset: {
+            ajax: true,
+            ajaxUrl: '/attendance/leave/fetch-leaves',
+            ajaxOnLoad: true,
+            records: [],
+            perPageDefault: 25
+        },
+        inputs: {
+            processingText: '<?php echo __jss("Loading ...") ?>',
+            searchPlaceholder: '<?php echo __jss("Search user ...") ?>',
+            recordCountText: '<?php echo __jss("Showing") ?> ',
+            filteredFrom: ' (<?php echo __jss("filtered from #TOTAL# total records") ?>)',
+            recordText: '<?php echo __jss("record") ?>',
+            recordTextPlural: '<?php echo __jss("records") ?>',
+            textOf: '<?php echo __jss("of") ?>',
+            textTo: '<?php echo __jss("to") ?>',
+            queries: $('.dt-search')
+        },
+        writers: {
+            _rowWriter: rowWriter
+        }
+    });
+
+    $(document).ready(function() {
+        if($.datepicker.regional['<?php echo Core_Model_Language::getCurrentLanguageDatepicker(); ?>']) {
+            $.datepicker.setDefaults($.datepicker.regional['<?php echo Core_Model_Language::getCurrentLanguageDatepicker(); ?>']);
+        } else {
+            $.datepicker.setDefaults($.datepicker.regional['en']);
+        }
+
+        $( "#from" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                numberOfMonths: 1,
+                onClose: function( selectedDate ) {
+                    $( "#to" ).datepicker( "option", "minDate", selectedDate );
+                }
+            });
+
+            $( "#to" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                numberOfMonths: 1,
+                onClose: function( selectedDate ) {
+                    $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+                }
+            });       
+
+            $(document).off("click", ".leave-status-update");
+            $(document).on("click", ".leave-status-update", function (e) {
+                e.preventDefault();
+                var status = $(this).data("status");
+                let deleteHref = $(this).attr("href");
+                swal({
+                    title: '<?php echo P__("attendance", "Confirmation") ?> - '+ status,
+                    text: $(this).data("text"),
+                    showCancelButton: true,
+                    confirmButtonColor: '#0099C7',
+                    confirmButtonText: '<?php echo P__("attendance", "Yes")?>',
+                    cancelButtonText: '<?php echo P__("attendance", "Cancel") ?>',
+                    buttons: true
+                }, function(value) {
+                    if (!value) {
+                        return false;
+                    }
+
+                    formget(deleteHref,
+                        {},
+                        function (data) {
+                            feature_form_success(data.message);
+
+                            // Reload only on success and when done!
+                            setTimeout(function () {
+                                location.reload();
+                            }, 1000)
+                        },
+                        function (data) {
+                            feature_form_error(JSON.parse(data.responseText).message);
+                        },
+                        false);
+                });
+            });
+
+
+
+     });
+ 
+ </script>
+<style type="text/css">
+    .dynatable-record-count{
+        bottom: 0px !important;
+    }
+    .text-blue{
+        color: #0099c7;
+    }
+ 
+    a.leave-action-button.leave-approve {
+        color: #4CAF50;
+    }
+    a.leave-action-button.leave-reject {
+        color: #FF5722;
+    }
+    .td-Rejected , .td-Approved {
+        display: none;
+    }
+</style>
